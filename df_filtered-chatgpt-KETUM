@@ -1,0 +1,25 @@
+import pandas as pd
+
+# Sample data
+data = [
+    "( 1 ) JUG MENGANDUNGI AIR DISYAKI CECAIR KETUM",
+    "(01) BOTOL PLASTIK BERTUTUP BERISI CECAIR DISYAKI AIR KETUM",
+    "(02) BOTOL DISYAKI AIR KETUM",
+    "TONG OREN",
+    "TONG PLASTIK",
+    "TONG PLASTIK WARNA OREN",
+    "UBAT BATUK",
+    "VAN",
+    "PIL NOSPAN"
+]
+
+# Create a DataFrame
+df = pd.DataFrame(data, columns=['line'])
+
+# Filter out lines containing the word 'KETUM'
+filtered_df = df[~df['line'].str.contains('KETUM')]
+
+# Save the filtered lines to a .txt file
+filtered_df.to_csv('filtered_lines-KETUM.txt', index=False, header=False)
+
+print("Filtered lines saved to filtered_lines-KETUM.txt")
